@@ -1,14 +1,9 @@
-
-
-
-
-
-  <!DOCTYPE html>
-<html lang="id">
+ <!DOCTYPE html>
+<html lang="id" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorshipSlide PMK NS - Persekutuan Mahasiswa Kristen Nafiri Sion</title>
+    <title>WorshipSlide PMK NS — Presentasi Ibadah</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter & Plus Jakarta Sans -->
@@ -17,387 +12,463 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
     <style>
+        :root {
+            --bg-body: #06080f;
+            --bg-sidebar: #0b0f19;
+            --bg-header: #080b13;
+            --bg-card: rgba(255, 255, 255, 0.035);
+            --border-subtle: rgba(148, 163, 184, 0.14);
+            --accent-primary: #f59e0b;
+            --accent-glow: rgba(245, 158, 11, 0.22);
+        }
+
+        /* Variasi Palet Warna Keseluruhan Body */
+        body[data-ui-theme="obsidian"] {
+            --bg-body: #06080f;
+            --bg-sidebar: #0b0f19;
+            --bg-header: #080b13;
+            --bg-card: rgba(255, 255, 255, 0.035);
+            --border-subtle: rgba(148, 163, 184, 0.14);
+            --accent-primary: #f59e0b;
+            --accent-glow: rgba(245, 158, 11, 0.22);
+        }
+
+        body[data-ui-theme="royal-purple"] {
+            --bg-body: #090614;
+            --bg-sidebar: #110b24;
+            --bg-header: #0c081a;
+            --bg-card: rgba(168, 85, 247, 0.06);
+            --border-subtle: rgba(192, 132, 252, 0.18);
+            --accent-primary: #c084fc;
+            --accent-glow: rgba(192, 132, 252, 0.25);
+        }
+
+        body[data-ui-theme="emerald-sanctuary"] {
+            --bg-body: #040d0b;
+            --bg-sidebar: #081714;
+            --bg-header: #05110e;
+            --bg-card: rgba(16, 185, 129, 0.055);
+            --border-subtle: rgba(52, 211, 153, 0.16);
+            --accent-primary: #34d399;
+            --accent-glow: rgba(52, 211, 153, 0.22);
+        }
+
+        body[data-ui-theme="crimson-grace"] {
+            --bg-body: #0e0609;
+            --bg-sidebar: #180b10;
+            --bg-header: #12080c;
+            --bg-card: rgba(244, 63, 94, 0.055);
+            --border-subtle: rgba(251, 113, 133, 0.16);
+            --accent-primary: #fb7185;
+            --accent-glow: rgba(251, 113, 133, 0.22);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            overflow: hidden;
-            user-select: none;
+            background-color: var(--bg-body);
+            background-image: 
+                radial-gradient(circle at 15% 15%, var(--accent-glow), transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.08), transparent 45%);
+            color: #f1f5f9;
+            transition: background-color 0.35s ease, color 0.3s ease;
         }
 
         .font-display {
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* Custom Scrollbar untuk Panel Operator */
+        .theme-sidebar {
+            background-color: var(--bg-sidebar);
+            border-color: var(--border-subtle);
+            backdrop-filter: blur(16px);
+            transition: background-color 0.35s ease, border-color 0.35s ease;
+        }
+
+        .theme-header {
+            background-color: var(--bg-header);
+            border-color: var(--border-subtle);
+            transition: background-color 0.35s ease, border-color 0.35s ease;
+        }
+
+        .theme-card {
+            background-color: var(--bg-card);
+            border-color: var(--border-subtle);
+        }
+
+        /* Custom Scrollbar Halus */
         ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: rgba(15, 23, 42, 0.5);
+            background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(100, 116, 139, 0.4);
+            background: rgba(148, 163, 184, 0.25);
             border-radius: 9999px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(148, 163, 184, 0.7);
+            background: rgba(148, 163, 184, 0.45);
         }
 
-        /* Tema Latar Belakang Stage */
-        .bg-theme-royal {
-            background: radial-gradient(circle at 22% 18%, #1e1b4b 0%, #0f172a 48%, #020617 100%);
+        /* Latar Belakang Layar Proyeksi */
+        .stage-theme-heavenly {
+            background: radial-gradient(circle at 30% 25%, #3b1764 0%, #150e2b 52%, #060811 100%);
         }
-        .bg-theme-heavenly {
-            background: radial-gradient(circle at 20% 20%, #111827 0%, #090d16 55%, #030712 100%);
+        .stage-theme-midnight {
+            background: radial-gradient(circle at 70% 20%, #0f3b4c 0%, #091726 55%, #04070e 100%);
         }
-        .bg-theme-dawn {
-            background: linear-gradient(135deg, #18181b 0%, #1e1b4b 50%, #09090b 100%);
+        .stage-theme-gold {
+            background: radial-gradient(circle at 50% 20%, #452709 0%, #1c1108 55%, #070605 100%);
         }
-        .bg-theme-emerald {
-            background: radial-gradient(circle at 80% 10%, #064e3b 0%, #090d16 60%, #020617 100%);
-        }
-        .bg-theme-minimal {
-            background: #030303;
+        .stage-theme-pure-dark {
+            background: radial-gradient(circle at 50% 50%, #141824 0%, #05070c 100%);
         }
 
-        /* Animasi Partikel Cahaya Halus */
-        @keyframes floatGlow {
-            0%, 100% {
-                transform: translateY(0px) scale(1);
-                opacity: 0.35;
+        /* Efek Bayangan Teks Lirik Proyektor */
+        .lyric-shadow {
+            text-shadow: 0 4px 24px rgba(0, 0, 0, 0.85), 0 0 45px rgba(255, 255, 255, 0.16);
+        }
+
+        /* Animasi Transisi Slide */
+        @keyframes slideFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(0.985);
             }
-            50% {
-                transform: translateY(-25px) scale(1.1);
-                opacity: 0.65;
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
             }
         }
-        .animate-glow-slow {
-            animation: floatGlow 8s ease-in-out infinite;
-        }
-        .animate-glow-delayed {
-            animation: floatGlow 11s ease-in-out 3s infinite;
-        }
-
-        /* Bayangan Teks Kuat agar Mudah Dibaca Jemaat di Proyektor */
-        .worship-text-shadow {
-            text-shadow: 
-                0 4px 12px rgba(0, 0, 0, 0.85),
-                0 2px 4px rgba(0, 0, 0, 0.95),
-                0 0 30px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Transisi Halus Teks Slide */
-        .slide-fade {
-            transition: opacity 0.25s ease-in-out, transform 0.25s ease-out;
+        .animate-slide-text {
+            animation: slideFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
     </style>
 </head>
-<body class="bg-[#06080f] text-slate-100 h-screen w-screen flex flex-col md:flex-row">
+<body data-ui-theme="obsidian" class="min-h-screen lg:h-screen lg:overflow-hidden flex flex-col lg:flex-row select-none">
 
     <!-- =====================================================================
          1. PANEL KONTROL OPERATOR (SIDEBAR KIRI)
          ===================================================================== -->
-    <aside id="operatorSidebar" class="w-full md:w-[380px] lg:w-[420px] h-[52vh] md:h-full bg-[#0b0e17] border-b md:border-b-0 md:border-r border-slate-800/90 flex flex-col z-20 shrink-0 shadow-2xl shadow-black/80">
+    <aside id="operatorSidebar" class="theme-sidebar w-full lg:w-[395px] xl:w-[420px] shrink-0 border-b lg:border-b-0 lg:border-r flex flex-col lg:h-full z-20 shadow-2xl">
         
-        <!-- Header Aplikasi & Logo PMK Nafiri Sion -->
-        <div class="px-4 py-3 bg-[#0f131f] border-b border-slate-800/90 flex items-center justify-between gap-2">
+        <!-- Header Brand & Logo PMK Nafiri Sion -->
+        <div class="theme-header px-4 py-3.5 border-b flex items-center justify-between gap-2.5">
             <div class="flex items-center gap-3 min-w-0">
-                <!-- Logo PMK NS (Emblem Perisai & Salib PMK Nafiri Sion + Klik untuk Ganti Logo) -->
-                <div id="headerLogoWrapper" onclick="document.getElementById('logoFileInput').click()" title="Klik untuk mengganti/unggah file logo PMK NS" class="w-11 h-11 rounded-xl bg-white/95 border-2 border-amber-400 flex items-center justify-center shadow-lg shadow-amber-500/25 overflow-hidden cursor-pointer shrink-0 group relative transition-transform hover:scale-105">
-                    <img id="customLogoImg" src="" alt="Logo PMK NS" class="hidden w-full h-full object-contain p-0.5">
-                    <svg id="defaultLogoSvg" viewBox="0 0 100 100" class="w-10 h-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Lingkaran Luar Emas & Putih -->
-                        <circle cx="50" cy="50" r="46" fill="#FFFFFF" stroke="#D97706" stroke-width="4"/>
-                        <circle cx="50" cy="50" r="35" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
-                        <!-- Teks Melingkar Atas & Bawah -->
-                        <path id="topArcHeader" d="M 14,50 A 36,36 0 1,1 86,50" fill="none"/>
-                        <text font-size="6.8" font-weight="800" fill="#1E3A8A" letter-spacing="0.4">
-                            <textPath href="#topArcHeader" startOffset="50%" text-anchor="middle">PMK NAFIRI SION</textPath>
-                        </text>
-                        <!-- Perisai Merah & Biru -->
-                        <path d="M31 28 H69 V50 C69 65 50 76 50 76 C50 76 31 65 31 50 Z" fill="#1D4ED8" stroke="#F59E0B" stroke-width="2.5"/>
-                        <!-- Salib Utama -->
-                        <path d="M50 31 V68 M37 44 H63" stroke="#FACC15" stroke-width="5" stroke-linecap="round"/>
-                        <!-- Nafiri Emas Menyilang -->
-                        <path d="M35 60 L64 38 L67 43 L37 63 Z" fill="#FDE047"/>
-                        <!-- Alkitab Terbuka di Bawah -->
-                        <path d="M38 66 Q44 63 50 66 Q56 63 62 66 V72 Q56 69 50 72 Q44 69 38 72 Z" fill="#FFFFFF"/>
+                <!-- Logo PMK Nafiri Sion (Klik untuk ganti logo kustom) -->
+                <div onclick="document.getElementById('logoFileInput').click()" title="Klik untuk mengganti file gambar logo" class="relative group w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400/20 to-amber-600/10 border border-amber-400/40 p-1 flex items-center justify-center shrink-0 cursor-pointer shadow-lg shadow-amber-500/10 hover:border-amber-400 transition-all overflow-hidden">
+                    <img id="headerLogoImg" alt="Logo PMK Nafiri Sion" class="hidden w-full h-full object-contain rounded-lg">
+                    <svg id="headerLogoSvg" viewBox="0 0 120 120" class="w-full h-full drop-shadow">
+                        <defs>
+                            <linearGradient id="shieldGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#fde68a"/>
+                                <stop offset="50%" stop-color="#f59e0b"/>
+                                <stop offset="100%" stop-color="#b45309"/>
+                            </linearGradient>
+                            <radialGradient id="innerBlue" cx="50%" cy="45%" r="55%">
+                                <stop offset="0%" stop-color="#1d4ed8"/>
+                                <stop offset="100%" stop-color="#0f172a"/>
+                            </radialGradient>
+                        </defs>
+                        <circle cx="60" cy="60" r="56" fill="url(#shieldGold)"/>
+                        <circle cx="60" cy="60" r="49" fill="url(#innerBlue)" stroke="#fef3c7" stroke-width="1.5"/>
+                        <circle cx="60" cy="60" r="39" fill="none" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3 2"/>
+                        <!-- Salib & Cahaya -->
+                        <rect x="56" y="25" width="8" height="54" rx="2" fill="#fbbf24"/>
+                        <rect x="40" y="41" width="40" height="8" rx="2" fill="#fbbf24"/>
+                        <!-- Alkitab Terbuka -->
+                        <path d="M36 82 Q48 76 60 82 Q72 76 84 82 L81 92 Q70 87 60 92 Q50 87 39 92 Z" fill="#fef3c7"/>
                     </svg>
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
                         <i data-lucide="camera" class="w-4 h-4 text-amber-300"></i>
                     </div>
                 </div>
-                <div class="truncate">
+
+                <div class="min-w-0">
                     <div class="flex items-center gap-1.5">
-                        <h1 class="font-display font-extrabold text-sm tracking-wide text-white leading-tight truncate">WorshipSlide <span class="text-amber-400">PMK NS</span></h1>
+                        <h1 class="font-display font-extrabold text-sm sm:text-base tracking-tight text-white truncate">
+                            WorshipSlide <span class="text-amber-400">PMK NS</span>
+                        </h1>
                     </div>
                     <p class="text-[11px] text-slate-400 font-medium truncate">Persekutuan Mahasiswa Kristen Nafiri Sion</p>
                 </div>
             </div>
             
-            <!-- Status Live Indicator -->
-            <div id="liveBadge" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] font-semibold shrink-0">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>TAYANG</span>
+            <!-- Status Live Indicator & Tombol Login Admin -->
+            <div class="flex items-center gap-1.5 shrink-0">
+                <button id="btnAdminAuth" onclick="handleAdminAuthClick()" title="Login / Logout Operator Admin" class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 border border-slate-700 text-slate-300 text-[11px] font-semibold transition-all">
+                    <i id="adminAuthIcon" data-lucide="lock" class="w-3 h-3 text-amber-400"></i>
+                    <span id="pmkns2026">pmknafirision</span>
+                </button>
+                <div id="liveBadge" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>TAYANG</span>
+                </div>
             </div>
         </div>
 
-        <!-- Tombol Aksi Cepat Layar (Clear Text & Blackout) -->
-        <div class="p-3 bg-[#090c14] border-b border-slate-800/80 grid grid-cols-2 gap-2">
-            <button id="btnClearText" onclick="toggleClearText()" class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-semibold text-xs transition-all border border-slate-700/80 bg-slate-900/90 hover:bg-slate-800 text-slate-200 active:scale-[0.98]">
-                <i data-lucide="eye-off" class="w-4 h-4 text-amber-400"></i>
+        <!-- Tombol Kontrol Cepat Layar (Clear Text & Blackout) -->
+        <div class="px-4 py-3 grid grid-cols-2 gap-2.5 border-b border-slate-800/70">
+            <button id="btnClearText" onclick="toggleClearText()" class="py-2 px-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-slate-700/80 text-xs font-semibold text-slate-200 flex items-center justify-center gap-2 transition-all">
+                <i data-lucide="eye-off" class="w-3.5 h-3.5 text-amber-400"></i>
                 <span>Clear Text (Latar)</span>
             </button>
-            <button id="btnBlackout" onclick="toggleBlackout()" class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-semibold text-xs transition-all border border-slate-700/80 bg-slate-900/90 hover:bg-slate-800 text-slate-200 active:scale-[0.98]">
-                <i data-lucide="monitor-off" class="w-4 h-4 text-rose-400"></i>
+            <button id="btnBlackout" onclick="toggleBlackout()" class="py-2 px-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-slate-700/80 text-xs font-semibold text-slate-200 flex items-center justify-center gap-2 transition-all">
+                <i data-lucide="monitor-off" class="w-3.5 h-3.5 text-rose-400"></i>
                 <span>Blackout (Hitam)</span>
             </button>
         </div>
 
-        <!-- Navigasi Tab Sidebar: Daftar Lagu vs Pengaturan Visual -->
-        <div class="px-3 pt-2 bg-[#0b0e17] border-b border-slate-800/80 flex gap-1">
-            <button id="tabSongs" onclick="switchSidebarTab('songs')" class="flex-1 py-2 text-xs font-semibold rounded-t-lg border-b-2 border-amber-400 text-amber-300 bg-slate-900/80 transition-colors flex items-center justify-center gap-1.5">
-                <i data-lucide="music" class="w-3.5 h-3.5 text-amber-400"></i>
-                Daftar Lagu & Bait
+        <!-- Navigasi Tab Operator -->
+        <div class="grid grid-cols-2 border-b border-slate-800/80 text-xs font-bold">
+            <button id="tabBtnSongs" onclick="switchSidebarTab('songs')" class="py-2.5 px-3 border-b-2 border-amber-400 text-amber-400 bg-amber-400/[0.04] flex items-center justify-center gap-2 transition-all">
+                <i data-lucide="music" class="w-3.5 h-3.5"></i>
+                <span>Daftar Lagu & Bait</span>
             </button>
-            <button id="tabVisual" onclick="switchSidebarTab('visual')" class="flex-1 py-2 text-xs font-semibold rounded-t-lg border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-colors flex items-center justify-center gap-1.5">
+            <button id="tabBtnTheme" onclick="switchSidebarTab('theme')" class="py-2.5 px-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-2 transition-all">
                 <i data-lucide="palette" class="w-3.5 h-3.5"></i>
-                Latar & Teks
+                <span>Warna, Latar & Teks</span>
             </button>
         </div>
 
-        <!-- KONTEN TAB 1: DAFTAR LAGU & BAIT -->
-        <div id="panelSongs" class="flex-1 flex flex-col overflow-hidden">
+        <!-- TAB 1: DAFTAR LAGU & BAIT -->
+        <div id="tabPanelSongs" class="flex-1 flex flex-col min-h-0 overflow-hidden">
             <!-- Pencarian & Tombol Tambah Lagu -->
-            <div class="p-3 border-b border-slate-800/80 flex gap-2 bg-[#0d111c]">
+            <div class="p-3.5 flex items-center gap-2 border-b border-slate-800/70">
                 <div class="relative flex-1">
-                    <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
-                    <input type="text" id="searchSongInput" oninput="renderSongList()" placeholder="Cari judul lagu..." class="w-full bg-[#070910] border border-slate-800 rounded-xl pl-8 pr-3 py-1.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400">
+                    <i data-lucide="search" class="w-3.5 h-3.5 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                    <input type="text" id="songSearchInput" oninput="renderSongList()" placeholder="Cari judul atau lirik lagu..." class="w-full bg-black/40 border border-slate-700/80 rounded-xl pl-8 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 transition-colors">
                 </div>
-                <button onclick="openSongModal('add')" class="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1 transition-all shrink-0 shadow-md shadow-amber-500/20" title="Tambah Lagu Baru">
-                    <i data-lucide="plus" class="w-4 h-4 stroke-[2.5]"></i>
+                <button onclick="openSongModal('add')" class="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-lg shadow-amber-500/20 shrink-0 transition-all">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
                     <span>Baru</span>
                 </button>
             </div>
 
-            <!-- Daftar Lagu (Scrollable bagian atas) -->
-            <div class="h-36 md:h-44 overflow-y-auto p-2 border-b border-slate-800/80 bg-[#080a12] space-y-1" id="songListContainer">
-                <!-- Diisi melalui JavaScript -->
+            <!-- List Judul Lagu -->
+            <div id="songListContainer" class="px-3.5 py-2.5 space-y-1.5 max-h-[210px] lg:max-h-[235px] overflow-y-auto border-b border-slate-800/80">
+                <!-- Diisi oleh JavaScript -->
             </div>
 
             <!-- Header Daftar Bait Lagu Terpilih -->
-            <div class="px-3 py-2 bg-[#0f131f] border-b border-slate-800/80 flex items-center justify-between">
+            <div class="theme-header px-3.5 py-2 border-b flex items-center justify-between">
                 <div class="truncate pr-2">
                     <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold block">Lagu Aktif:</span>
                     <h2 id="activeSongTitle" class="text-xs font-bold text-amber-400 truncate">-</h2>
                 </div>
-                <div class="flex items-center gap-1 shrink-0">
-                    <button onclick="openSongModal('edit')" class="p-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 transition-colors" title="Edit Lirik Lagu Ini">
+                <div class="flex items-center gap-1.5 shrink-0">
+                    <button onclick="openSongModal('edit')" class="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 border border-slate-700/80 transition-colors" title="Edit Lirik Lagu Ini (Admin)">
                         <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
                     </button>
-                    <button onclick="deleteCurrentSong()" class="p-1.5 rounded-lg bg-slate-900 hover:bg-rose-950/80 text-slate-400 hover:text-rose-400 border border-slate-700/80 transition-colors" title="Hapus Lagu">
+                    <button onclick="deleteCurrentSong()" class="p-1.5 rounded-lg bg-white/5 hover:bg-rose-950/80 text-slate-400 hover:text-rose-400 border border-slate-700/80 transition-colors" title="Hapus Lagu (Admin)">
                         <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Daftar Bait / Slide yang Bisa Langsung Diklik -->
-            <div id="slidesGridContainer" class="flex-1 overflow-y-auto p-3 space-y-2 bg-[#0b0e17]">
-                <!-- Diisi melalui JavaScript -->
+            <!-- Daftar Kartu Bait / Slide -->
+            <div id="slideListContainer" class="flex-1 p-3.5 space-y-2.5 overflow-y-auto">
+                <!-- Diisi oleh JavaScript -->
             </div>
         </div>
 
-        <!-- KONTEN TAB 2: KUSTOMISASI VISUAL LATAR & TEKS -->
-        <div id="panelVisual" class="hidden flex-1 overflow-y-auto p-4 space-y-5 bg-[#0b0e17]">
+        <!-- TAB 2: PENGATURAN WARNA BODY, LATAR & TEKS -->
+        <div id="tabPanelTheme" class="hidden flex-1 p-4 space-y-4 overflow-y-auto">
             
-            <!-- Pilihan Tema Latar Belakang -->
-            <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">Tema Latar Belakang Gelap</label>
-                <div class="grid grid-cols-2 gap-2.5">
-                    <button onclick="setTheme('heavenly')" id="themeBtn-heavenly" class="theme-option p-2.5 rounded-xl border-2 border-amber-400 bg-slate-900 text-left transition-all">
-                        <div class="w-full h-10 rounded-lg bg-theme-heavenly mb-2 border border-white/10"></div>
-                        <p class="text-xs font-bold text-white">Obsidian Gelap</p>
-                        <p class="text-[10px] text-slate-400">Gelap elegan & teduh</p>
-                    </button>
-
-                    <button onclick="setTheme('royal')" id="themeBtn-royal" class="theme-option p-2.5 rounded-xl border-2 border-slate-800 bg-slate-900/50 hover:border-slate-700 text-left transition-all">
-                        <div class="w-full h-10 rounded-lg bg-theme-royal mb-2 border border-white/10"></div>
-                        <p class="text-xs font-bold text-white">Midnight Navy</p>
-                        <p class="text-[10px] text-slate-400">Biru malam pekat</p>
-                    </button>
-
-                    <button onclick="setTheme('dawn')" id="themeBtn-dawn" class="theme-option p-2.5 rounded-xl border-2 border-slate-800 bg-slate-900/50 hover:border-slate-700 text-left transition-all">
-                        <div class="w-full h-10 rounded-lg bg-theme-dawn mb-2 border border-white/10"></div>
-                        <p class="text-xs font-bold text-white">Charcoal Indigo</p>
-                        <p class="text-[10px] text-slate-400">Abu-abu gelap & violet</p>
-                    </button>
-
-                    <button onclick="setTheme('minimal')" id="themeBtn-minimal" class="theme-option p-2.5 rounded-xl border-2 border-slate-800 bg-slate-900/50 hover:border-slate-700 text-left transition-all">
-                        <div class="w-full h-10 rounded-lg bg-theme-minimal mb-2 border border-white/10"></div>
-                        <p class="text-xs font-bold text-white">Hitam Pekat</p>
-                        <p class="text-[10px] text-slate-400">Kontras tinggi & fokus teks</p>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Toggle Partikel Cahaya Halus -->
-            <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/80 flex items-center justify-between">
-                <div>
-                    <p class="text-xs font-bold text-white">Animasi Partikel Cahaya</p>
-                    <p class="text-[11px] text-slate-400">Efek pendaran lembut di latar belakang</p>
-                </div>
-                <button id="toggleParticlesBtn" onclick="toggleParticles()" class="w-11 h-6 rounded-full bg-amber-500 p-0.5 transition-colors relative">
-                    <span id="toggleParticlesDot" class="block w-5 h-5 rounded-full bg-white shadow transform translate-x-5 transition-transform"></span>
-                </button>
-            </div>
-
-            <!-- Pengaturan Logo Organisasi (Header & Layar Proyeksi) -->
-            <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/80 space-y-2.5">
+            <!-- Pengaturan Warna Keseluruhan Aplikasi (Body UI Theme) -->
+            <div class="theme-card p-3.5 rounded-xl border space-y-2.5">
                 <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-xs font-bold text-white">Logo PMK NS / Gereja</p>
-                        <p class="text-[11px] text-slate-400">Tampilkan logo di pojok layar proyeksi</p>
-                    </div>
-                    <button id="toggleStageLogoBtn" onclick="toggleStageLogo()" class="w-11 h-6 rounded-full bg-amber-500 p-0.5 transition-colors relative">
-                        <span id="toggleStageLogoDot" class="block w-5 h-5 rounded-full bg-white shadow transform translate-x-5 transition-transform"></span>
+                    <p class="text-xs font-bold text-white flex items-center gap-1.5">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i>
+                        <span>Tema Warna Aplikasi (Body)</span>
+                    </p>
+                    <span class="text-[10px] text-slate-400">Tampilan Panel</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="setBodyUiTheme('obsidian')" data-ui-btn="obsidian" class="ui-theme-btn p-2.5 rounded-xl border border-amber-400 bg-black/50 text-left flex items-center gap-2.5 transition-all">
+                        <span class="w-4 h-4 rounded-full bg-gradient-to-br from-slate-900 to-amber-500 border border-white/20 shrink-0"></span>
+                        <span class="text-xs font-semibold text-white">Midnight Gold</span>
+                    </button>
+                    <button onclick="setBodyUiTheme('royal-purple')" data-ui-btn="royal-purple" class="ui-theme-btn p-2.5 rounded-xl border border-slate-700 bg-black/40 text-left flex items-center gap-2.5 transition-all">
+                        <span class="w-4 h-4 rounded-full bg-gradient-to-br from-purple-950 to-purple-400 border border-white/20 shrink-0"></span>
+                        <span class="text-xs font-semibold text-slate-300">Royal Purple</span>
+                    </button>
+                    <button onclick="setBodyUiTheme('emerald-sanctuary')" data-ui-btn="emerald-sanctuary" class="ui-theme-btn p-2.5 rounded-xl border border-slate-700 bg-black/40 text-left flex items-center gap-2.5 transition-all">
+                        <span class="w-4 h-4 rounded-full bg-gradient-to-br from-emerald-950 to-emerald-400 border border-white/20 shrink-0"></span>
+                        <span class="text-xs font-semibold text-slate-300">Emerald Peace</span>
+                    </button>
+                    <button onclick="setBodyUiTheme('crimson-grace')" data-ui-btn="crimson-grace" class="ui-theme-btn p-2.5 rounded-xl border border-slate-700 bg-black/40 text-left flex items-center gap-2.5 transition-all">
+                        <span class="w-4 h-4 rounded-full bg-gradient-to-br from-rose-950 to-rose-400 border border-white/20 shrink-0"></span>
+                        <span class="text-xs font-semibold text-slate-300">Crimson Grace</span>
                     </button>
                 </div>
+            </div>
+
+            <!-- Tema Latar Proyeksi Utama -->
+            <div class="theme-card p-3.5 rounded-xl border space-y-2.5">
+                <p class="text-xs font-bold text-white flex items-center gap-1.5">
+                    <i data-lucide="monitor" class="w-3.5 h-3.5 text-amber-400"></i>
+                    <span>Latar Layar Proyeksi Jemaat</span>
+                </p>
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="setStageTheme('heavenly')" class="p-2.5 rounded-xl border border-slate-700 hover:border-amber-400 bg-gradient-to-br from-purple-950 to-slate-950 text-left transition-all">
+                        <span class="text-xs font-bold text-white block">Ungu Kemuliaan</span>
+                        <span class="text-[10px] text-purple-300">Penyembahan</span>
+                    </button>
+                    <button onclick="setStageTheme('midnight')" class="p-2.5 rounded-xl border border-slate-700 hover:border-amber-400 bg-gradient-to-br from-cyan-950 to-slate-950 text-left transition-all">
+                        <span class="text-xs font-bold text-white block">Biru Malam</span>
+                        <span class="text-[10px] text-cyan-300">Tenang & Teduh</span>
+                    </button>
+                    <button onclick="setStageTheme('gold')" class="p-2.5 rounded-xl border border-slate-700 hover:border-amber-400 bg-gradient-to-br from-amber-950 to-stone-950 text-left transition-all">
+                        <span class="text-xs font-bold text-white block">Emas Kudus</span>
+                        <span class="text-[10px] text-amber-300">Sukacita & Pujian</span>
+                    </button>
+                    <button onclick="setStageTheme('pure-dark')" class="p-2.5 rounded-xl border border-slate-700 hover:border-amber-400 bg-gradient-to-br from-slate-900 to-black text-left transition-all">
+                        <span class="text-xs font-bold text-white block">Hitam Kontras</span>
+                        <span class="text-[10px] text-slate-400">Maksimal Jelas</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ukuran Teks Lirik & Efek Partikel -->
+            <div class="theme-card p-3.5 rounded-xl border space-y-3">
+                <div>
+                    <div class="flex justify-between text-xs font-bold text-white mb-1.5">
+                        <span>Ukuran Teks Lirik</span>
+                        <span id="fontSizeValue" class="text-amber-400">44 px</span>
+                    </div>
+                    <input type="range" id="fontSizeSlider" min="26" max="68" value="44" oninput="updateFontSize(this.value)" class="w-full accent-amber-400 cursor-pointer">
+                </div>
+
+                <div class="flex items-center justify-between pt-1 border-t border-slate-800">
+                    <span class="text-xs font-semibold text-slate-200">Partikel Cahaya Animasi</span>
+                    <button id="btnToggleParticles" onclick="toggleParticles()" class="px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold">
+                        Aktif
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kustomisasi Logo Organisasi -->
+            <div class="theme-card p-3.5 rounded-xl border space-y-2.5">
+                <p class="text-xs font-bold text-white">Logo PMK Nafiri Sion</p>
                 <div class="flex items-center gap-2 pt-1">
-                    <label class="flex-1 py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-semibold text-amber-400 cursor-pointer flex items-center justify-center gap-1.5 transition-colors">
+                    <label class="flex-1 py-2 px-3 rounded-lg bg-black/40 hover:bg-black/60 border border-slate-700 text-xs font-semibold text-amber-400 cursor-pointer flex items-center justify-center gap-1.5 transition-colors">
                         <i data-lucide="image-plus" class="w-3.5 h-3.5"></i>
                         <span>Unggah File Logo</span>
                         <input type="file" id="logoFileInput" accept="image/*" onchange="handleLogoUpload(event)" class="hidden">
                     </label>
-                    <button onclick="resetCustomLogo()" class="py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-400 hover:text-white transition-colors" title="Gunakan Logo Bawaan">
+                    <button onclick="resetCustomLogo()" class="py-2 px-3 rounded-lg bg-black/40 hover:bg-black/60 border border-slate-700 text-xs font-semibold text-slate-400 hover:text-white transition-colors" title="Gunakan Logo Bawaan">
                         Reset
                     </button>
                 </div>
             </div>
 
-            <!-- Panduan Pintasan Keyboard -->
-            <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 space-y-1.5">
-                <p class="text-[11px] font-bold text-slate-300 flex items-center gap-1.5">
-                    <i data-lucide="keyboard" class="w-3.5 h-3.5 text-amber-400"></i> Pintasan Keyboard Cepat
-                </p>
-                <div class="grid grid-cols-2 gap-y-1 text-[11px] text-slate-400 pt-1">
-                    <span><kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">→</kbd> / <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">Spasi</kbd></span>
-                    <span>Slide Berikutnya</span>
-                    <span><kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">←</kbd></span>
-                    <span>Slide Sebelumnya</span>
-                    <span><kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">C</kbd></span>
-                    <span>Clear Text (Latar)</span>
-                    <span><kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">B</kbd></span>
-                    <span>Blackout Layar</span>
-                    <span><kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">F</kbd></span>
-                    <span>Mode Layar Penuh</span>
+            <!-- Ekspor & Impor Database Lagu (JSON) -->
+            <div class="theme-card p-3.5 rounded-xl border space-y-2.5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold text-white">Backup & Restore Lagu (JSON)</p>
+                        <p class="text-[11px] text-slate-400">Ekspor atau impor seluruh daftar lagu ibadah</p>
+                    </div>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 font-semibold">Admin</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2 pt-1">
+                    <button onclick="exportSongsJSON()" class="py-2 px-3 rounded-lg bg-black/40 hover:bg-black/60 border border-slate-700 text-xs font-semibold text-emerald-400 flex items-center justify-center gap-1.5 transition-colors">
+                        <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                        <span>Ekspor JSON</span>
+                    </button>
+                    <label class="py-2 px-3 rounded-lg bg-black/40 hover:bg-black/60 border border-slate-700 text-xs font-semibold text-sky-400 cursor-pointer flex items-center justify-center gap-1.5 transition-colors">
+                        <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                        <span>Impor JSON</span>
+                        <input type="file" id="jsonImportInput" accept=".json,application/json" onchange="handleImportJSON(event)" class="hidden">
+                    </label>
                 </div>
             </div>
         </div>
     </aside>
 
     <!-- =====================================================================
-         2. LAYAR PREVIEW / STAGE VIEW UTAMA (PROYEKSI JEMAAT)
+         2. AREA LAYAR PROYEKSI UTAMA (STAGE KANAN)
          ===================================================================== -->
-    <main id="stageWrapper" class="flex-1 h-[48vh] md:h-full relative flex flex-col bg-[#06080f] overflow-hidden">
+    <main class="flex-1 flex flex-col min-w-0 min-h-[460px] lg:h-full relative">
         
-        <!-- Toolbar Atas Stage (Sembunyi saat Fullscreen) -->
-        <header id="stageTopBar" class="px-4 py-2.5 bg-[#0b0e17] border-b border-slate-800/90 flex items-center justify-between z-20">
-            <div class="flex items-center gap-3">
-                <span class="text-xs font-semibold text-slate-400 hidden sm:inline">Layar Proyeksi Utama</span>
-                <span id="slideCounterBadge" class="px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-700 text-xs font-bold text-amber-400">
-                    Slide 1 / 6
+        <!-- Bar Atas Layar Proyeksi -->
+        <header id="stageTopBar" class="theme-header px-4 sm:px-6 py-3 border-b flex items-center justify-between gap-3 z-10">
+            <div class="flex items-center gap-2.5">
+                <span class="text-xs font-semibold text-slate-300">Layar Proyeksi Utama</span>
+                <span id="slideCounterBadge" class="px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold">
+                    Slide 1 / 1
                 </span>
             </div>
 
-            <div class="flex items-center gap-2">
-                <button onclick="enterFullscreenMode()" class="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-lg shadow-amber-500/20 transition-all active:scale-95">
-                    <i data-lucide="maximize-2" class="w-3.5 h-3.5 stroke-[2.5]"></i>
-                    <span>Fullscreen Mode (Proyektor)</span>
-                </button>
-            </div>
+            <button onclick="toggleFullscreenStage()" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-lg shadow-amber-500/20 transition-all">
+                <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                <span>Fullscreen Mode (Proyektor)</span>
+            </button>
         </header>
 
-        <!-- Kanvas Layar Proyeksi (Stage Area) -->
-        <div id="projectionStage" class="flex-1 relative bg-theme-heavenly flex items-center justify-center p-6 sm:p-12 md:p-16 overflow-hidden transition-colors duration-700">
+        <!-- Kanvas Proyeksi Utama -->
+        <div id="projectionStage" class="stage-theme-heavenly flex-1 relative flex items-center justify-center p-6 sm:p-12 overflow-hidden transition-all duration-500">
             
+            <!-- Kanvas Partikel Cahaya Halus -->
+            <canvas id="particleCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-75"></canvas>
+
             <!-- Watermark Logo PMK NS di Pojok Kiri Atas Layar Proyeksi -->
-            <div id="stageLogoBadge" class="absolute top-5 left-6 z-20 flex items-center gap-3 opacity-95 pointer-events-none transition-opacity duration-300">
-                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/95 backdrop-blur-md border-2 border-amber-400 p-1 flex items-center justify-center shadow-xl shadow-black/50 overflow-hidden">
-                    <img id="stageCustomLogoImg" src="" alt="Logo PMK NS" class="hidden w-full h-full object-contain">
-                    <svg id="stageDefaultLogoSvg" viewBox="0 0 100 100" class="w-10 h-10 sm:w-12 sm:h-12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="46" fill="#FFFFFF" stroke="#D97706" stroke-width="4"/>
-                        <circle cx="50" cy="50" r="35" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
-                        <path id="topArcStage" d="M 14,50 A 36,36 0 1,1 86,50" fill="none"/>
-                        <text font-size="6.8" font-weight="800" fill="#1E3A8A" letter-spacing="0.4">
-                            <textPath href="#topArcStage" startOffset="50%" text-anchor="middle">PMK NAFIRI SION</textPath>
-                        </text>
-                        <path d="M31 28 H69 V50 C69 65 50 76 50 76 C50 76 31 65 31 50 Z" fill="#1D4ED8" stroke="#F59E0B" stroke-width="2.5"/>
-                        <path d="M50 31 V68 M37 44 H63" stroke="#FACC15" stroke-width="5" stroke-linecap="round"/>
-                        <path d="M35 60 L64 38 L67 43 L37 63 Z" fill="#FDE047"/>
-                        <path d="M38 66 Q44 63 50 66 Q56 63 62 66 V72 Q56 69 50 72 Q44 69 38 72 Z" fill="#FFFFFF"/>
-                    </svg>
+            <div id="stageWatermark" class="absolute top-5 left-5 flex items-center gap-2.5 opacity-80 pointer-events-none z-10">
+                <img id="stageLogoImg" alt="Logo PMK NS" class="hidden w-9 h-9 object-contain rounded-lg">
+                <div id="stageLogoBadge" class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-300 font-display font-extrabold text-xs">
+                    NS
                 </div>
-                <div class="text-left drop-shadow-md">
-                    <p class="font-display font-extrabold text-xs sm:text-sm tracking-wider text-white uppercase">PMK Nafiri Sion</p>
-                    <p class="text-[10px] sm:text-xs text-amber-300 font-semibold">Ibadah Persekutuan</p>
+                <div class="hidden sm:block">
+                    <p class="text-[11px] font-bold tracking-wider uppercase text-white/80">PMK Nafiri Sion</p>
                 </div>
             </div>
 
-            <!-- Lapisan Animasi Partikel Cahaya Halus -->
-            <div id="particlesLayer" class="absolute inset-0 pointer-events-none overflow-hidden">
-                <div class="absolute top-1/4 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-slate-700/15 rounded-full blur-3xl animate-glow-slow"></div>
-                <div class="absolute bottom-1/4 right-1/4 w-80 h-80 md:w-[28rem] md:h-[28rem] bg-indigo-950/25 rounded-full blur-3xl animate-glow-delayed"></div>
-                <canvas id="particleCanvas" class="w-full h-full opacity-55"></canvas>
-            </div>
-
-            <!-- Kontainer Teks Lirik Jemaat -->
-            <div id="lyricDisplayContainer" class="relative z-10 w-full max-w-5xl text-center slide-fade">
-                <p id="lyricTextDisplay" class="font-display font-extrabold text-white tracking-tight leading-snug sm:leading-snug md:leading-snug worship-text-shadow text-2xl sm:text-4xl md:text-5xl lg:text-6xl whitespace-pre-line">
-                    Memuat lirik...
+            <!-- Kontainer Teks Lirik Utama -->
+            <div id="lyricDisplayWrapper" class="relative z-10 max-w-5xl w-full text-center px-4 transition-opacity duration-300">
+                <p id="lyricDisplayText" style="font-size: 44px;" class="font-display font-extrabold text-white leading-snug tracking-tight whitespace-pre-line lyric-shadow animate-slide-text">
+                    Tak terbatas kuasaMu Tuhan
+                    Semua dapat Kau lakukan
                 </p>
             </div>
 
-            <!-- Watermark Judul Lagu & Info Bait Halus di Pojok Bawah Stage -->
-            <div id="stageFooterInfo" class="absolute bottom-4 left-6 right-6 flex items-center justify-between text-slate-400/60 text-xs font-medium pointer-events-none z-10">
-                <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-amber-400/70"></span>
-                    <span id="stageSongWatermark">Mujizat Itu Nyata</span>
-                </div>
-                <span class="hidden sm:inline text-slate-400/50 tracking-wider uppercase text-[10px] font-semibold">PMK Nafiri Sion</span>
-                <span id="stageSectionWatermark">Bait 1</span>
+            <!-- Overlay Blackout (Layar Hitam Total) -->
+            <div id="blackoutOverlay" class="hidden absolute inset-0 bg-black z-30 flex items-center justify-center">
+                <span class="text-xs text-slate-700 font-medium tracking-widest uppercase">Layar Blackout Aktif (Tekan B untuk Kembali)</span>
             </div>
 
-            <!-- Lapisan Blackout (Layar Hitam Pekat) -->
-            <div id="blackoutOverlay" class="absolute inset-0 bg-black z-30 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center">
-                <span id="blackoutHint" class="text-slate-700 text-xs font-semibold tracking-widest uppercase">Layar Blackout Aktif</span>
+            <!-- Footer Info Lagu di Pojok Bawah Layar Proyeksi -->
+            <div class="absolute bottom-4 left-6 right-6 flex items-center justify-between text-xs text-white/50 font-medium pointer-events-none z-10">
+                <span id="stageFooterSongTitle">Mujizat Itu Nyata</span>
+                <span id="stageFooterSlideInfo">Bait 1 dari 6</span>
             </div>
 
-            <!-- Tombol Keluar & Petunjuk ESC saat Mode Fullscreen -->
-            <div id="fullscreenControls" class="hidden fixed top-4 right-4 z-50 flex items-center gap-2 opacity-20 hover:opacity-100 transition-opacity duration-300">
-                <span class="px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md text-white/80 text-xs border border-white/15">
-                    Tekan <b>ESC</b> untuk keluar
-                </span>
-                <button onclick="exitFullscreenMode()" class="px-3.5 py-1.5 rounded-full bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-lg">
-                    <i data-lucide="minimize-2" class="w-3.5 h-3.5"></i>
-                    <span>Keluar Layar Penuh</span>
-                </button>
-            </div>
+            <!-- Tombol Keluar Fullscreen Melayang -->
+            <button id="btnExitFullscreen" onclick="toggleFullscreenStage()" class="hidden fixed top-4 right-4 z-50 px-3.5 py-2 rounded-xl bg-black/70 hover:bg-black text-white border border-white/20 text-xs font-semibold backdrop-blur-md flex items-center gap-1.5">
+                <i data-lucide="minimize-2" class="w-3.5 h-3.5 text-amber-400"></i>
+                <span>Keluar Fullscreen (ESC)</span>
+            </button>
         </div>
 
-        <!-- Toolbar Navigasi Bawah Stage (Previous / Next Slide) -->
-        <footer id="stageBottomBar" class="px-4 py-2.5 bg-[#0b0e17] border-t border-slate-800/90 flex items-center justify-between z-20">
-            <button onclick="prevSlide()" id="btnPrevSlide" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 disabled:opacity-40 disabled:pointer-events-none text-slate-200 font-semibold text-xs flex items-center gap-2 border border-slate-700/80 transition-all active:scale-95">
+        <!-- Bar Navigasi Slide Bawah -->
+        <footer id="stageBottomBar" class="theme-header px-4 sm:px-6 py-3 border-t flex items-center justify-between gap-4 z-10">
+            <button onclick="prevSlide()" class="px-4 py-2 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-slate-700/80 text-xs font-semibold text-slate-200 flex items-center gap-2 transition-all">
                 <i data-lucide="chevron-left" class="w-4 h-4"></i>
                 <span>Slide Sebelumnya</span>
             </button>
 
-            <div class="hidden sm:flex items-center gap-1.5" id="slideDotsContainer">
-                <!-- Indikator titik slide -->
+            <!-- Indikator Titik Slide -->
+            <div id="slideDotsContainer" class="flex items-center gap-1.5 overflow-x-auto max-w-[45%] py-1">
+                <!-- Diisi oleh JS -->
             </div>
 
-            <button onclick="nextSlide()" id="btnNextSlide" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 disabled:opacity-40 disabled:pointer-events-none text-slate-200 font-semibold text-xs flex items-center gap-2 border border-slate-700/80 transition-all active:scale-95">
+            <button onclick="nextSlide()" class="px-4 py-2 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-slate-700/80 text-xs font-semibold text-slate-200 flex items-center gap-2 transition-all">
                 <span>Slide Berikutnya</span>
                 <i data-lucide="chevron-right" class="w-4 h-4"></i>
             </button>
@@ -405,13 +476,13 @@
     </main>
 
     <!-- =====================================================================
-         3. MODAL TAMBAH / EDIT LAGU BARU
+         3A. MODAL TAMBAH / EDIT LAGU ROHANI
          ===================================================================== -->
     <div id="songModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div class="px-5 py-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+        <div class="theme-sidebar border border-slate-700 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="theme-header px-5 py-4 border-b flex items-center justify-between">
                 <h3 id="modalTitle" class="font-display font-bold text-base text-white flex items-center gap-2">
-                    <i data-lucide="music-2" class="w-4 h-4 text-amber-400"></i>
+                    <i data-lucide="plus-circle" class="w-4 h-4 text-amber-400"></i>
                     <span>Tambah Lagu Rohani Baru</span>
                 </h3>
                 <button onclick="closeSongModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
@@ -422,24 +493,22 @@
             <div class="p-5 space-y-4 overflow-y-auto">
                 <div>
                     <label class="block text-xs font-bold text-slate-300 mb-1.5">Judul Lagu</label>
-                    <input type="text" id="modalSongTitle" placeholder="Contoh: Mujizat Itu Nyata" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500">
+                    <input type="text" id="modalSongTitle" placeholder="Contoh: Kubersyukur Pada-Mu" class="w-full bg-black/50 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400">
                 </div>
 
                 <div>
                     <div class="flex items-center justify-between mb-1.5">
-                        <label class="block text-xs font-bold text-slate-300">Lirik Lagu (Per Bait / Slide)</label>
-                        <span class="text-[11px] text-amber-400 font-medium">Pisahkan tiap slide dengan 1 baris kosong</span>
+                        <label class="text-xs font-bold text-slate-300">Lirik Lagu (Pisahkan antar-slide dengan baris kosong)</label>
                     </div>
-                    <textarea id="modalSongLyrics" rows="10" placeholder="Tak terbatas kuasaMu Tuhan&#10;Semua dapat Kau lakukan&#10;Apa yang kelihatan mustahil bagiku&#10;Itu sangat mungkin bagiMu&#10;&#10;Di saat ku tak berdaya&#10;KuasaMu yang sempurna&#10;Ketika ku percaya&#10;Mujizat itu nyata" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 leading-relaxed"></textarea>
+                    <textarea id="modalSongLyrics" rows="9" placeholder="Bait 1 baris 1&#10;Bait 1 baris 2&#10;&#10;Reff baris 1&#10;Reff baris 2" class="w-full bg-black/50 border border-slate-700 rounded-xl p-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 leading-relaxed"></textarea>
                 </div>
 
-                <!-- Kotak Pesan Validasi (Pengganti alert) -->
-                <div id="modalErrorBox" class="hidden p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-medium">
-                    Judul lagu dan lirik tidak boleh kosong!
+                <div id="modalErrorBox" class="hidden p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-medium">
+                    Judul lagu dan minimal satu bait lirik wajib diisi.
                 </div>
             </div>
 
-            <div class="px-5 py-3.5 bg-slate-950 border-t border-slate-800 flex justify-end gap-2.5">
+            <div class="theme-header px-5 py-3.5 border-t flex justify-end gap-2.5">
                 <button onclick="closeSongModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition-colors">
                     Batal
                 </button>
@@ -451,18 +520,67 @@
     </div>
 
     <!-- =====================================================================
-         4. NOTIFIKASI TOAST HALUS (PENGGANTI ALERT)
+         3B. MODAL LOGIN SEBAGAI ADMIN
          ===================================================================== -->
-    <div id="toastNotification" class="fixed bottom-16 right-4 z-50 bg-slate-800 border border-slate-700 text-white px-4 py-2.5 rounded-xl shadow-2xl text-xs font-semibold flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300 transform translate-y-2">
-        <i data-lucide="info" class="w-4 h-4 text-amber-400"></i>
-        <span id="toastMessage">Pesan notifikasi</span>
+    <div id="adminLoginModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="theme-sidebar border border-slate-700 rounded-2xl w-full max-w-sm shadow-2xl overflow-hidden flex flex-col">
+            <div class="theme-header px-5 py-4 border-b flex items-center justify-between">
+                <h3 class="font-display font-bold text-base text-white flex items-center gap-2">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-amber-400"></i>
+                    <span>Login Operator Admin</span>
+                </h3>
+                <button onclick="closeAdminLoginModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <form onsubmit="submitAdminLogin(event)" class="p-5 space-y-4">
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Masuk sebagai <strong class="text-slate-200">Admin PMK NS</strong> untuk menambah, mengedit, menghapus, atau mengimpor daftar lagu ibadah.
+                </p>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1.5">Username Admin</label>
+                    <input type="text" id="adminUsernameInput" value="admin" placeholder="Masukkan username..." class="w-full bg-black/50 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1.5">PIN / Kata Sandi Admin</label>
+                    <input type="password" id="adminPasswordInput" placeholder="Masukkan kata sandi..." class="w-full bg-black/50 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500">
+                    <p class="text-[11px] text-slate-500 mt-1.5">Kata sandi bawaan: <code class="text-amber-400/90 font-semibold">pmkns2026</code> atau <code class="text-amber-400/90 font-semibold">admin123</code></p>
+                </div>
+
+                <div id="adminLoginError" class="hidden p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-medium">
+                    Username atau kata sandi admin salah!
+                </div>
+
+                <div class="pt-1 flex justify-end gap-2">
+                    <button type="button" onclick="closeAdminLoginModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition-colors">
+                        Batal
+                    </button>
+                    <button type="submit" class="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-lg shadow-amber-500/20 transition-colors">
+                        Masuk Admin
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         4. NOTIFIKASI TOAST HALUS
+         ===================================================================== -->
+    <div id="toastBox" class="fixed bottom-5 right-5 z-50 pointer-events-none opacity-0 translate-y-3 transition-all duration-300">
+        <div class="px-4 py-2.5 rounded-xl bg-slate-900/95 border border-amber-400/40 text-white text-xs font-semibold shadow-2xl flex items-center gap-2 backdrop-blur-md">
+            <i data-lucide="info" class="w-4 h-4 text-amber-400"></i>
+            <span id="toastMessage">Notifikasi</span>
+        </div>
     </div>
 
     <!-- =====================================================================
          5. LOGIKA JAVASCRIPT APLIKASI
          ===================================================================== -->
     <script>
-        // --- DATA LAGU PRESET ROHANI POPULER INDONESIA ---
+        // --- DAFTAR LAGU ROHANI BAWAAN ---
         const DEFAULT_SONGS = [
             {
                 id: 'song-mujizat',
@@ -477,7 +595,7 @@
                 ]
             },
             {
-                id: 'song-bahagia',
+                id: 'song-hari-ini',
                 title: 'Hari Ini Kurasa Bahagia',
                 slides: [
                     "Hari ini kurasa bahagia\nBerkumpul bersama saudara seiman\nTuhan Yesus t'lah satukan kita\nTanpa memandang di antara kita",
@@ -494,7 +612,7 @@
                 ]
             },
             {
-                id: 'song-janjimu',
+                id: 'song-janji-fajar',
                 title: 'Janji-Mu Seperti Fajar',
                 slides: [
                     "Ketika kuhadapi kehidupan ini\nJalan mana yang harus kupilih\nKu tahu ku tak mampu, ku tahu ku tak sanggup\nHanya Kau, Tuhan, tempat jawabanku",
@@ -507,52 +625,17 @@
                 title: "S'gala Puji Syukur",
                 slides: [
                     "S'gala puji syukur\nHanya bagi-Mu Tuhan\nSebab Kau yang layak dipuja",
-                    "Kami mau bersorak\nTinggikan nama-Mu\nHaleluya\nSoraklah Haleluya\nSoraklah Haleluya\nHaleluya"
+                    "Kami mau bersorak\nTinggikan nama-Mu\nHaleluya",
+                    "Soraklah Haleluya\nSoraklah Haleluya\nHaleluya"
                 ]
             },
             {
                 id: 'song-doa-yabes',
-                title: 'Doa Yabes (Kiranya Engkau Memberkati Aku)',
+                title: 'Doa Yabes',
                 slides: [
                     "Kiranya Engkau memberkati aku\nBerlimpah-limpah\nDan memperluas daerahku",
-                    "Dan kiranya tangan-Mu menyertai aku\nDan melindungi aku dari pada malapetaka\nSehingga kesakitan tidak menimpa aku",
-                    "Kupercaya Kau bekerja"
-                ]
-            },
-            {
-                id: 'song-1',
-                title: 'Bapa Engkau Sungguh Baik',
-                slides: [
-                    "Bapa Engkau sungguh baik\nKasihMu melimpah di hidupku\nBapa ku berterima kasih\nBerkatMu hari ini\nYang Kau sediakan bagiku",
-                    "Ku naikkan syukurku\nBuat hari yang Kau b'ri\nTak habis-habisnya\nKasih dan rahmatMu",
-                    "S'lalu baru dan tak pernah\nTerlambat pertolonganMu\nBesar setiaMu\nDi s'panjang hidupku"
-                ]
-            },
-            {
-                id: 'song-2',
-                title: "S'bab Kau Besar",
-                slides: [
-                    "Ku b'ri kemuliaan dan hormat\nKu angkat suara pujian\nKu agungkan namaMu",
-                    "S'bab Kau besar\nPerbuatanMu ajaib\nTiada seperti Engkau\nTiada seperti Engkau",
-                    "S'bab Kau besar\nPerbuatanMu ajaib\nTiada seperti Engkau\nTiada seperti Engkau"
-                ]
-            },
-            {
-                id: 'song-3',
-                title: 'Kasih SetiaMu Yang Kurasakan',
-                slides: [
-                    "Kasih setiaMu yang kurasakan\nLebih tinggi dari langit biru\nKebaikanMu yang t'lah Kau nyatakan\nLebih dalam dari lautan",
-                    "BerkatMu yang telah kuterima\nSempat membuatku terpesona\nApa yang tak pernah kupikirkan\nItu yang Kau sediakan bagiku",
-                    "Siapakah aku ini Tuhan\nJadi biji mataMu\nDengan apakah kubalas Tuhan\nS'lain puji dan sembah Kau"
-                ]
-            },
-            {
-                id: 'song-4',
-                title: 'Ku Kagum Hormat Akan Engkau',
-                slides: [
-                    "Kau sungguh indah tiada taranya\nSungguh menakjubkan\nSungguh ajaib 'tuk dimengerti\nLebih dari s'mua yang ada",
-                    "HikmatMu tiada terselami\nKasihMu dalam tak terduga\nKau sungguh indah tiada taranya\nMulia dan berkuasa",
-                    "Ku kagum hormat akan Engkau\nKu kagum hormat akan Engkau\nKau Allah yang layak dipuji\nKu kagum akan Engkau"
+                    "Dan kiranya tangan-Mu menyertai aku\nDan melindungi aku\nDari pada malapetaka\nSehingga kesakitan tidak menimpa aku",
+                    "Kupercaya Kau bekerja\nMendatangkan kebaikan bagiku\nKupercaya Kau bekerja\nMendatangkan kebaikan bagiku"
                 ]
             }
         ];
@@ -564,14 +647,200 @@
         let isClearText = false;
         let isBlackout = false;
         let isFullscreen = false;
-        let modalMode = 'add'; // 'add' atau 'edit'
+        let isAdminLoggedIn = false;
+        let pendingAdminAction = null;
+        let modalMode = 'add';
         let visualSettings = {
             theme: 'heavenly',
+            uiTheme: 'obsidian',
             particles: true,
-            showStageLogo: true,
-            fontSize: 'medium',
-            textAlign: 'center'
+            fontSize: 44
         };
+
+        // --- PENGATURAN WARNA KESELURUHAN BODY (UI THEME) ---
+        function setBodyUiTheme(themeName) {
+            visualSettings.uiTheme = themeName;
+            document.body.setAttribute('data-ui-theme', themeName);
+            try {
+                localStorage.setItem('worshipSlide_uiTheme', themeName);
+            } catch (e) {}
+
+            document.querySelectorAll('.ui-theme-btn').forEach(btn => {
+                const isSelected = btn.getAttribute('data-ui-btn') === themeName;
+                if (isSelected) {
+                    btn.classList.remove('border-slate-700');
+                    btn.classList.add('border-amber-400', 'bg-white/10');
+                } else {
+                    btn.classList.remove('border-amber-400', 'bg-white/10');
+                    btn.classList.add('border-slate-700');
+                }
+            });
+        }
+
+        // --- SISTEM LOGIN ADMIN ---
+        function loadAdminSession() {
+            try {
+                isAdminLoggedIn = sessionStorage.getItem('worshipSlide_isAdmin') === 'true';
+            } catch (e) {
+                isAdminLoggedIn = false;
+            }
+            updateAdminUI();
+        }
+
+        function updateAdminUI() {
+            const btn = document.getElementById('btnAdminAuth');
+            if (!btn) return;
+
+            if (isAdminLoggedIn) {
+                btn.className = 'flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/60 text-amber-300 text-[11px] font-bold transition-all';
+                btn.innerHTML = `<i data-lucide="unlock" class="w-3 h-3 text-amber-400"></i><span id="adminAuthLabel">Admin Aktif</span>`;
+                btn.title = 'Klik untuk Logout dari Mode Admin';
+            } else {
+                btn.className = 'flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 border border-slate-700 text-slate-300 text-[11px] font-semibold transition-all';
+                btn.innerHTML = `<i data-lucide="lock" class="w-3 h-3 text-slate-400"></i><span id="adminAuthLabel">Admin</span>`;
+                btn.title = 'Klik untuk Login sebagai Admin';
+            }
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function handleAdminAuthClick() {
+            if (isAdminLoggedIn) {
+                isAdminLoggedIn = false;
+                try {
+                    sessionStorage.removeItem('worshipSlide_isAdmin');
+                } catch (e) {}
+                updateAdminUI();
+                showToast('Berhasil keluar dari mode Admin');
+            } else {
+                openAdminLoginModal();
+            }
+        }
+
+        function requireAdmin(callback) {
+            if (isAdminLoggedIn) {
+                callback();
+            } else {
+                pendingAdminAction = callback;
+                openAdminLoginModal();
+                showToast('Silakan login sebagai Admin terlebih dahulu');
+            }
+        }
+
+        function openAdminLoginModal() {
+            const modal = document.getElementById('adminLoginModal');
+            document.getElementById('adminLoginError').classList.add('hidden');
+            document.getElementById('adminPasswordInput').value = '';
+            modal.classList.remove('hidden');
+            if (window.lucide) lucide.createIcons();
+            setTimeout(() => document.getElementById('adminPasswordInput').focus(), 50);
+        }
+
+        function closeAdminLoginModal() {
+            document.getElementById('adminLoginModal').classList.add('hidden');
+            pendingAdminAction = null;
+        }
+
+        function submitAdminLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('adminUsernameInput').value.trim().toLowerCase();
+            const password = document.getElementById('adminPasswordInput').value.trim();
+            const errorEl = document.getElementById('adminLoginError');
+
+            const validUsers = ['admin', 'pmkns', 'operator'];
+            const validPasswords = ['pmkns2026', 'admin123', 'nafirision'];
+
+            if (validUsers.includes(username) && validPasswords.includes(password)) {
+                isAdminLoggedIn = true;
+                try {
+                    sessionStorage.setItem('worshipSlide_isAdmin', 'true');
+                } catch (e) {}
+                updateAdminUI();
+                const actionToRun = pendingAdminAction;
+                closeAdminLoginModal();
+                showToast('Login Admin berhasil! Akses penuh diaktifkan');
+                if (typeof actionToRun === 'function') {
+                    actionToRun();
+                }
+            } else {
+                errorEl.classList.remove('hidden');
+            }
+        }
+
+        // --- EKSPOR & IMPOR LAGU FORMAT JSON ---
+        function exportSongsJSON() {
+            try {
+                const payload = {
+                    app: 'WorshipSlide PMK NS',
+                    organization: 'Persekutuan Mahasiswa Kristen Nafiri Sion',
+                    exportedAt: new Date().toISOString(),
+                    totalSongs: songs.length,
+                    songs: songs
+                };
+                const jsonString = JSON.stringify(payload, null, 2);
+                const blob = new Blob([jsonString], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                const dateStamp = new Date().toISOString().slice(0, 10);
+                a.href = url;
+                a.download = `lagu-ibadah-pmk-ns-${dateStamp}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showToast(`Berhasil mengekspor ${songs.length} lagu ke JSON`);
+            } catch (err) {
+                console.error('Gagal ekspor JSON:', err);
+                showToast('Gagal mengekspor file JSON');
+            }
+        }
+
+        function handleImportJSON(event) {
+            const file = event.target.files && event.target.files[0];
+            if (!file) return;
+
+            requireAdmin(() => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const parsed = JSON.parse(e.target.result);
+                        const importedList = Array.isArray(parsed) ? parsed : parsed.songs;
+
+                        if (!Array.isArray(importedList) || importedList.length === 0) {
+                            showToast('Format JSON tidak valid atau daftar lagu kosong');
+                            return;
+                        }
+
+                        const validSongs = importedList
+                            .filter(item => item && typeof item.title === 'string' && Array.isArray(item.slides) && item.slides.length > 0)
+                            .map((item, idx) => ({
+                                id: item.id || `song-import-${Date.now()}-${idx}`,
+                                title: item.title.trim(),
+                                slides: item.slides.map(s => String(s).trim()).filter(Boolean)
+                            }));
+
+                        if (validSongs.length === 0) {
+                            showToast('Tidak ada struktur lagu yang valid di file JSON');
+                            return;
+                        }
+
+                        songs = validSongs;
+                        saveSongsToStorage();
+                        selectSong(songs[0].id, 0);
+                        showToast(`Berhasil mengimpor ${validSongs.length} lagu dari JSON`);
+                    } catch (err) {
+                        console.error('Error parsing JSON:', err);
+                        showToast('File JSON rusak atau format salah');
+                    } finally {
+                        event.target.value = '';
+                    }
+                };
+                reader.readAsText(file);
+            });
+
+            if (!isAdminLoggedIn) {
+                event.target.value = '';
+            }
+        }
 
         // --- PENYIMPANAN & PEMUATAN LAGU ---
         function loadSongsFromStorage() {
@@ -581,115 +850,100 @@
                     const parsed = JSON.parse(saved);
                     if (Array.isArray(parsed) && parsed.length > 0) {
                         songs = parsed;
+                        activeSongId = songs[0].id;
                         return;
                     }
                 }
-            } catch (e) {
-                console.warn('Gagal memuat dari localStorage:', e);
-            }
+            } catch (e) {}
             songs = JSON.parse(JSON.stringify(DEFAULT_SONGS));
+            activeSongId = songs[0].id;
+            saveSongsToStorage();
         }
 
         function saveSongsToStorage() {
             try {
                 localStorage.setItem('worshipSlide_songs_v3', JSON.stringify(songs));
-            } catch (e) {
-                console.warn('Gagal menyimpan ke localStorage:', e);
-            }
-        }
-
-        // --- NAVIGASI TAB SIDEBAR ---
-        function switchSidebarTab(tab) {
-            const tabSongs = document.getElementById('tabSongs');
-            const tabVisual = document.getElementById('tabVisual');
-            const panelSongs = document.getElementById('panelSongs');
-            const panelVisual = document.getElementById('panelVisual');
-
-            if (tab === 'songs') {
-                tabSongs.className = 'flex-1 py-2 text-xs font-semibold rounded-t-lg border-b-2 border-amber-400 text-amber-300 bg-slate-900/80 transition-colors flex items-center justify-center gap-1.5';
-                tabVisual.className = 'flex-1 py-2 text-xs font-semibold rounded-t-lg border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-colors flex items-center justify-center gap-1.5';
-                panelSongs.classList.remove('hidden');
-                panelVisual.classList.add('hidden');
-            } else {
-                tabVisual.className = 'flex-1 py-2 text-xs font-semibold rounded-t-lg border-b-2 border-amber-400 text-amber-300 bg-slate-900/80 transition-colors flex items-center justify-center gap-1.5';
-                tabSongs.className = 'flex-1 py-2 text-xs font-semibold rounded-t-lg border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-colors flex items-center justify-center gap-1.5';
-                panelVisual.classList.remove('hidden');
-                panelSongs.classList.add('hidden');
-            }
+            } catch (e) {}
         }
 
         // --- RENDER DAFTAR LAGU & SLIDE ---
         function renderSongList() {
             const container = document.getElementById('songListContainer');
-            const query = (document.getElementById('searchSongInput')?.value || '').toLowerCase().trim();
-            const filtered = songs.filter(s => s.title.toLowerCase().includes(query));
+            const query = (document.getElementById('songSearchInput').value || '').toLowerCase().trim();
+            container.innerHTML = '';
+
+            const filtered = songs.filter(song =>
+                song.title.toLowerCase().includes(query) ||
+                song.slides.some(sl => sl.toLowerCase().includes(query))
+            );
 
             if (filtered.length === 0) {
-                container.innerHTML = `<div class="text-center py-6 text-xs text-slate-500">Lagu tidak ditemukan</div>`;
+                container.innerHTML = `<p class="text-xs text-slate-500 text-center py-4">Lagu tidak ditemukan.</p>`;
                 return;
             }
 
-            container.innerHTML = filtered.map(song => {
+            filtered.forEach(song => {
                 const isActive = song.id === activeSongId;
-                return `
-                    <button onclick="selectSong('${song.id}', 0)" class="w-full text-left px-3 py-2 rounded-xl text-xs transition-all flex items-center justify-between gap-2 ${
-                        isActive
-                            ? 'bg-amber-500/15 border border-amber-400/50 text-amber-300 font-bold shadow-sm'
-                            : 'bg-slate-900/50 hover:bg-slate-800/70 border border-transparent text-slate-200 font-medium'
-                    }">
-                        <span class="truncate">${escapeHtml(song.title)}</span>
-                        <span class="px-2 py-0.5 rounded-md text-[10px] shrink-0 ${
-                            isActive ? 'bg-amber-400/20 text-amber-300' : 'bg-slate-800 text-slate-400'
-                        }">${song.slides.length} slide</span>
-                    </button>
+                const btn = document.createElement('button');
+                btn.onclick = () => selectSong(song.id, 0);
+                btn.className = isActive
+                    ? 'w-full px-3 py-2.5 rounded-xl bg-amber-500/15 border border-amber-400/60 text-left flex items-center justify-between gap-2 transition-all'
+                    : 'w-full px-3 py-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-slate-800 text-left flex items-center justify-between gap-2 transition-all';
+
+                btn.innerHTML = `
+                    <span class="text-xs font-bold ${isActive ? 'text-amber-300' : 'text-slate-200'} truncate">${escapeHtml(song.title)}</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full ${isActive ? 'bg-amber-400/20 text-amber-300' : 'bg-slate-800 text-slate-400'} font-semibold shrink-0">${song.slides.length} slide</span>
                 `;
-            }).join('');
+                container.appendChild(btn);
+            });
         }
 
         function selectSong(songId, slideIdx = 0) {
-            const song = songs.find(s => s.id === songId) || songs[0];
+            const song = songs.find(s => s.id === songId);
             if (!song) return;
-
-            activeSongId = song.id;
+            activeSongId = songId;
             activeSlideIndex = Math.max(0, Math.min(slideIdx, song.slides.length - 1));
 
             document.getElementById('activeSongTitle').textContent = song.title;
             renderSongList();
-            renderSlidesGrid(song);
-            updateStageProjection();
+            renderSlideCards();
+            updateProjectionDisplay();
         }
 
-        function renderSlidesGrid(song) {
-            const container = document.getElementById('slidesGridContainer');
-            container.innerHTML = song.slides.map((lyric, idx) => {
-                const isCurrent = idx === activeSlideIndex;
-                const isReff = lyric.trim().toLowerCase().startsWith('reff');
-                const badgeLabel = isReff ? `REFF (SLIDE ${idx + 1})` : `BAIT ${idx + 1}`;
+        function renderSlideCards() {
+            const container = document.getElementById('slideListContainer');
+            const song = songs.find(s => s.id === activeSongId);
+            if (!song) return;
 
-                return `
-                    <div onclick="goToSlide(${idx})" class="p-3 rounded-xl border transition-all cursor-pointer ${
-                        isCurrent
-                            ? 'bg-amber-500/15 border-amber-400 shadow-md shadow-amber-500/10'
-                            : 'bg-[#080a12] hover:bg-slate-900/80 border-slate-800/90'
-                    }">
-                        <div class="flex items-center justify-between mb-1.5">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase ${
-                                isCurrent ? 'bg-amber-400 text-slate-950' : 'bg-slate-800 text-slate-300'
-                            }">${badgeLabel}</span>
-                            ${isCurrent ? '<span class="text-[11px] font-bold text-amber-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Aktif</span>' : ''}
-                        </div>
-                        <p class="text-xs leading-relaxed whitespace-pre-line ${isCurrent ? 'text-white font-semibold' : 'text-slate-300'}">${escapeHtml(lyric)}</p>
+            container.innerHTML = '';
+            song.slides.forEach((text, idx) => {
+                const isActive = idx === activeSlideIndex;
+                const card = document.createElement('div');
+                card.onclick = () => goToSlide(idx);
+                card.className = isActive
+                    ? 'p-3.5 rounded-xl bg-amber-500/15 border border-amber-400/70 cursor-pointer shadow-lg shadow-amber-500/5 transition-all'
+                    : 'p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] border border-slate-800/90 cursor-pointer transition-all';
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded ${isActive ? 'bg-amber-400 text-slate-950' : 'bg-slate-800 text-slate-400'}">
+                            BAIT ${idx + 1}
+                        </span>
+                        ${isActive ? '<span class="text-[11px] font-bold text-amber-400 flex items-center gap-1">● Aktif</span>' : ''}
                     </div>
+                    <p class="text-xs ${isActive ? 'text-white font-semibold' : 'text-slate-300'} whitespace-pre-line leading-relaxed">${escapeHtml(text)}</p>
                 `;
-            }).join('');
+                container.appendChild(card);
+            });
         }
 
         function goToSlide(index) {
             const song = songs.find(s => s.id === activeSongId);
             if (!song) return;
-            activeSlideIndex = Math.max(0, Math.min(index, song.slides.length - 1));
-            renderSlidesGrid(song);
-            updateStageProjection();
+            if (index < 0 || index >= song.slides.length) return;
+            activeSlideIndex = index;
+            renderSlideCards();
+            updateProjectionDisplay();
         }
 
         function nextSlide() {
@@ -706,305 +960,207 @@
             }
         }
 
-        function updateStageProjection() {
+        function updateProjectionDisplay() {
             const song = songs.find(s => s.id === activeSongId);
             if (!song) return;
 
-            const total = song.slides.length;
             const currentText = song.slides[activeSlideIndex] || '';
-            const lyricEl = document.getElementById('lyricTextDisplay');
-            const containerEl = document.getElementById('lyricDisplayContainer');
+            const lyricEl = document.getElementById('lyricDisplayText');
 
-            containerEl.style.opacity = '0';
-            containerEl.style.transform = 'translateY(6px)';
+            lyricEl.classList.remove('animate-slide-text');
+            void lyricEl.offsetWidth;
+            lyricEl.textContent = currentText;
+            lyricEl.classList.add('animate-slide-text');
 
-            setTimeout(() => {
-                lyricEl.textContent = currentText;
-                if (!isClearText) {
-                    containerEl.style.opacity = '1';
-                    containerEl.style.transform = 'translateY(0)';
-                }
-            }, 100);
+            const total = song.slides.length;
+            const currentNum = activeSlideIndex + 1;
+            document.getElementById('slideCounterBadge').textContent = `Slide ${currentNum} / ${total}`;
+            document.getElementById('stageFooterSongTitle').textContent = song.title;
+            document.getElementById('stageFooterSlideInfo').textContent = `Bait ${currentNum} dari ${total}`;
 
-            document.getElementById('slideCounterBadge').textContent = `Slide ${activeSlideIndex + 1} / ${total}`;
-            document.getElementById('stageSongWatermark').textContent = song.title;
-            document.getElementById('stageSectionWatermark').textContent = `Bait ${activeSlideIndex + 1} dari ${total}`;
-
-            document.getElementById('btnPrevSlide').disabled = activeSlideIndex === 0;
-            document.getElementById('btnNextSlide').disabled = activeSlideIndex >= total - 1;
-
-            // Update indikator titik di toolbar bawah
+            // Render Dots Navigasi
             const dotsContainer = document.getElementById('slideDotsContainer');
-            dotsContainer.innerHTML = song.slides.map((_, i) => `
-                <button onclick="goToSlide(${i})" class="h-2 rounded-full transition-all ${
-                    i === activeSlideIndex ? 'w-6 bg-amber-400' : 'w-2 bg-slate-700 hover:bg-slate-500'
-                }" title="Slide ${i + 1}"></button>
-            `).join('');
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < total; i++) {
+                const dot = document.createElement('button');
+                dot.onclick = () => goToSlide(i);
+                dot.className = i === activeSlideIndex
+                    ? 'w-5 h-2 rounded-full bg-amber-400 transition-all'
+                    : 'w-2 h-2 rounded-full bg-slate-600 hover:bg-slate-400 transition-all';
+                dotsContainer.appendChild(dot);
+            }
         }
 
         // --- KONTROL CLEAR TEXT, BLACKOUT & FULLSCREEN ---
         function toggleClearText() {
             isClearText = !isClearText;
-            const container = document.getElementById('lyricDisplayContainer');
+            const wrapper = document.getElementById('lyricDisplayWrapper');
             const btn = document.getElementById('btnClearText');
-
             if (isClearText) {
-                container.style.opacity = '0';
+                wrapper.classList.add('opacity-0');
                 btn.classList.add('border-amber-400', 'bg-amber-500/20', 'text-amber-300');
-                showToast('Teks disembunyikan (Hanya Latar)');
             } else {
-                container.style.opacity = '1';
+                wrapper.classList.remove('opacity-0');
                 btn.classList.remove('border-amber-400', 'bg-amber-500/20', 'text-amber-300');
-                showToast('Teks lirik ditampilkan kembali');
             }
-            updateLiveStatusBadge();
         }
 
         function toggleBlackout() {
             isBlackout = !isBlackout;
             const overlay = document.getElementById('blackoutOverlay');
             const btn = document.getElementById('btnBlackout');
-
             if (isBlackout) {
-                overlay.classList.remove('opacity-0', 'pointer-events-none');
-                overlay.classList.add('opacity-100');
+                overlay.classList.remove('hidden');
                 btn.classList.add('border-rose-500', 'bg-rose-500/20', 'text-rose-300');
-                showToast('Layar Blackout Aktif');
             } else {
-                overlay.classList.add('opacity-0', 'pointer-events-none');
-                overlay.classList.remove('opacity-100');
+                overlay.classList.add('hidden');
                 btn.classList.remove('border-rose-500', 'bg-rose-500/20', 'text-rose-300');
-                showToast('Layar Proyeksi Aktif');
             }
-            updateLiveStatusBadge();
         }
 
-        function updateLiveStatusBadge() {
-            const badge = document.getElementById('liveBadge');
-            if (isBlackout) {
-                badge.className = 'flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-500/15 border border-rose-500/40 text-rose-400 text-[11px] font-semibold shrink-0';
-                badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-rose-400"></span><span>BLACKOUT</span>`;
-            } else if (isClearText) {
-                badge.className = 'flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-400 text-[11px] font-semibold shrink-0';
-                badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400"></span><span>CLEAR</span>`;
+        function toggleFullscreenStage() {
+            const stage = document.getElementById('projectionStage');
+            const exitBtn = document.getElementById('btnExitFullscreen');
+
+            if (!document.fullscreenElement) {
+                stage.requestFullscreen().then(() => {
+                    exitBtn.classList.remove('hidden');
+                }).catch(() => {
+                    // Fallback CSS Fullscreen jika dibatasi iframe
+                    isFullscreen = !isFullscreen;
+                    stage.classList.toggle('fixed');
+                    stage.classList.toggle('inset-0');
+                    stage.classList.toggle('z-50');
+                    exitBtn.classList.toggle('hidden', !isFullscreen);
+                });
             } else {
-                badge.className = 'flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] font-semibold shrink-0';
-                badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span><span>TAYANG</span>`;
+                document.exitFullscreen();
+                exitBtn.classList.add('hidden');
             }
-        }
-
-        function enterFullscreenMode() {
-            isFullscreen = true;
-            document.getElementById('operatorSidebar').classList.add('hidden');
-            document.getElementById('stageTopBar').classList.add('hidden');
-            document.getElementById('stageBottomBar').classList.add('hidden');
-            document.getElementById('fullscreenControls').classList.remove('hidden');
-            document.getElementById('stageWrapper').classList.remove('h-[48vh]');
-            document.getElementById('stageWrapper').classList.add('h-screen', 'w-screen');
-
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen().catch(() => {});
-            }
-            setTimeout(resizeCanvas, 100);
-        }
-
-        function exitFullscreenMode() {
-            isFullscreen = false;
-            document.getElementById('operatorSidebar').classList.remove('hidden');
-            document.getElementById('stageTopBar').classList.remove('hidden');
-            document.getElementById('stageBottomBar').classList.remove('hidden');
-            document.getElementById('fullscreenControls').classList.add('hidden');
-            document.getElementById('stageWrapper').classList.add('h-[48vh]');
-            document.getElementById('stageWrapper').classList.remove('h-screen', 'w-screen');
-
-            if (document.fullscreenElement && document.exitFullscreen) {
-                document.exitFullscreen().catch(() => {});
-            }
-            setTimeout(resizeCanvas, 100);
         }
 
         document.addEventListener('fullscreenchange', () => {
-            if (!document.fullscreenElement && isFullscreen) {
-                exitFullscreenMode();
+            const exitBtn = document.getElementById('btnExitFullscreen');
+            if (!document.fullscreenElement) {
+                exitBtn.classList.add('hidden');
             }
         });
 
-        // --- TEMA LATAR & PARTIKEL ---
-        function setTheme(themeName) {
+        // --- TAB SIDEBAR & PENGATURAN VISUAL ---
+        function switchSidebarTab(tab) {
+            const panelSongs = document.getElementById('tabPanelSongs');
+            const panelTheme = document.getElementById('tabPanelTheme');
+            const btnSongs = document.getElementById('tabBtnSongs');
+            const btnTheme = document.getElementById('tabBtnTheme');
+
+            if (tab === 'songs') {
+                panelSongs.classList.remove('hidden');
+                panelTheme.classList.add('hidden');
+                btnSongs.className = 'py-2.5 px-3 border-b-2 border-amber-400 text-amber-400 bg-amber-400/[0.04] flex items-center justify-center gap-2 transition-all';
+                btnTheme.className = 'py-2.5 px-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-2 transition-all';
+            } else {
+                panelSongs.classList.add('hidden');
+                panelTheme.classList.remove('hidden');
+                btnTheme.className = 'py-2.5 px-3 border-b-2 border-amber-400 text-amber-400 bg-amber-400/[0.04] flex items-center justify-center gap-2 transition-all';
+                btnSongs.className = 'py-2.5 px-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-2 transition-all';
+            }
+        }
+
+        function setStageTheme(themeName) {
             visualSettings.theme = themeName;
             const stage = document.getElementById('projectionStage');
-            stage.classList.remove('bg-theme-royal', 'bg-theme-heavenly', 'bg-theme-dawn', 'bg-theme-emerald', 'bg-theme-minimal');
-            stage.classList.add(`bg-theme-${themeName}`);
+            stage.classList.remove('stage-theme-heavenly', 'stage-theme-midnight', 'stage-theme-gold', 'stage-theme-pure-dark');
+            stage.classList.add(`stage-theme-${themeName}`);
+            try {
+                localStorage.setItem('worshipSlide_theme', themeName);
+            } catch (e) {}
+        }
 
-            document.querySelectorAll('.theme-option').forEach(btn => {
-                btn.classList.remove('border-amber-400', 'bg-slate-900');
-                btn.classList.add('border-slate-800', 'bg-slate-900/50');
-            });
-            const activeBtn = document.getElementById(`themeBtn-${themeName}`);
-            if (activeBtn) {
-                activeBtn.classList.remove('border-slate-800', 'bg-slate-900/50');
-                activeBtn.classList.add('border-amber-400', 'bg-slate-900');
-            }
+        function updateFontSize(val) {
+            visualSettings.fontSize = Number(val);
+            document.getElementById('fontSizeValue').textContent = `${val} px`;
+            document.getElementById('lyricDisplayText').style.fontSize = `${val}px`;
         }
 
         function toggleParticles() {
             visualSettings.particles = !visualSettings.particles;
-            const layer = document.getElementById('particlesLayer');
-            const btn = document.getElementById('toggleParticlesBtn');
-            const dot = document.getElementById('toggleParticlesDot');
-
-            if (visualSettings.particles) {
-                layer.classList.remove('hidden');
-                btn.classList.remove('bg-slate-700');
-                btn.classList.add('bg-amber-500');
-                dot.classList.add('translate-x-5');
-            } else {
-                layer.classList.add('hidden');
-                btn.classList.add('bg-slate-700');
-                btn.classList.remove('bg-amber-500');
-                dot.classList.remove('translate-x-5');
-            }
+            const canvas = document.getElementById('particleCanvas');
+            const btn = document.getElementById('btnToggleParticles');
+            canvas.style.display = visualSettings.particles ? 'block' : 'none';
+            btn.textContent = visualSettings.particles ? 'Aktif' : 'Nonaktif';
         }
 
-        // --- KELOLA LOGO PMK NS (DEFAULT SVG & UNGGAH FILE KUSTOM) ---
-        function applyLogoSource(imgSrc) {
-            const headerImg = document.getElementById('customLogoImg');
-            const headerSvg = document.getElementById('defaultLogoSvg');
-            const stageImg = document.getElementById('stageCustomLogoImg');
-            const stageSvg = document.getElementById('stageDefaultLogoSvg');
-
-            if (imgSrc) {
-                headerImg.src = imgSrc;
-                stageImg.src = imgSrc;
-                headerImg.classList.remove('hidden');
-                stageImg.classList.remove('hidden');
-                headerSvg.classList.add('hidden');
-                stageSvg.classList.add('hidden');
-            } else {
-                headerImg.classList.add('hidden');
-                stageImg.classList.add('hidden');
-                headerSvg.classList.remove('hidden');
-                stageSvg.classList.remove('hidden');
-            }
-        }
-
+        // --- UNGGAH LOGO KUSTOM ---
         function handleLogoUpload(event) {
             const file = event.target.files && event.target.files[0];
             if (!file) return;
-
             const reader = new FileReader();
             reader.onload = function(e) {
-                const result = e.target.result;
-                applyLogoSource(result);
+                const dataUrl = e.target.result;
+                applyLogoSource(dataUrl);
                 try {
-                    localStorage.setItem('worshipSlide_customLogo', result);
-                } catch (err) {
-                    console.warn('Ukuran logo terlalu besar untuk penyimpanan lokal:', err);
-                }
-                showToast('Logo PMK NS berhasil dipasang');
+                    localStorage.setItem('worshipSlide_customLogo', dataUrl);
+                } catch (err) {}
+                showToast('Logo berhasil diperbarui');
             };
             reader.readAsDataURL(file);
         }
 
+        function applyLogoSource(src) {
+            const hImg = document.getElementById('headerLogoImg');
+            const hSvg = document.getElementById('headerLogoSvg');
+            const sImg = document.getElementById('stageLogoImg');
+            const sBadge = document.getElementById('stageLogoBadge');
+
+            if (src) {
+                hImg.src = src;
+                hImg.classList.remove('hidden');
+                hSvg.classList.add('hidden');
+                sImg.src = src;
+                sImg.classList.remove('hidden');
+                sBadge.classList.add('hidden');
+            } else {
+                hImg.classList.add('hidden');
+                hSvg.classList.remove('hidden');
+                sImg.classList.add('hidden');
+                sBadge.classList.remove('hidden');
+            }
+        }
+
         function resetCustomLogo() {
             applyLogoSource(null);
-            localStorage.removeItem('worshipSlide_customLogo');
-            const input = document.getElementById('logoFileInput');
-            if (input) input.value = '';
-            showToast('Logo dikembalikan ke emblem bawaan');
-        }
-
-        function toggleStageLogo() {
-            visualSettings.showStageLogo = !visualSettings.showStageLogo;
-            const badge = document.getElementById('stageLogoBadge');
-            const btn = document.getElementById('toggleStageLogoBtn');
-            const dot = document.getElementById('toggleStageLogoDot');
-
-            if (visualSettings.showStageLogo) {
-                badge.classList.remove('hidden');
-                btn.classList.remove('bg-slate-700');
-                btn.classList.add('bg-amber-500');
-                dot.classList.add('translate-x-5');
-            } else {
-                badge.classList.add('hidden');
-                btn.classList.add('bg-slate-700');
-                btn.classList.remove('bg-amber-500');
-                dot.classList.remove('translate-x-5');
-            }
-        }
-
-        function setFontSize(size) {
-            visualSettings.fontSize = size;
-            const lyricEl = document.getElementById('lyricTextDisplay');
-            const label = document.getElementById('fontSizeLabel');
-
-            lyricEl.classList.remove(
-                'text-xl', 'sm:text-3xl', 'md:text-4xl', 'lg:text-5xl',
-                'text-2xl', 'sm:text-4xl', 'md:text-5xl', 'lg:text-6xl',
-                'text-3xl', 'sm:text-5xl', 'md:text-6xl', 'lg:text-7xl',
-                'text-4xl', 'sm:text-6xl', 'md:text-7xl', 'lg:text-8xl'
-            );
-
-            const sizeMap = {
-                small: { classes: ['text-xl', 'sm:text-3xl', 'md:text-4xl', 'lg:text-5xl'], text: 'Kecil' },
-                medium: { classes: ['text-2xl', 'sm:text-4xl', 'md:text-5xl', 'lg:text-6xl'], text: 'Sedang (Standar)' },
-                large: { classes: ['text-3xl', 'sm:text-5xl', 'md:text-6xl', 'lg:text-7xl'], text: 'Besar' },
-                xlarge: { classes: ['text-4xl', 'sm:text-6xl', 'md:text-7xl', 'lg:text-8xl'], text: 'Ekstra Besar' }
-            };
-
-            lyricEl.classList.add(...sizeMap[size].classes);
-            label.textContent = sizeMap[size].text;
-
-            // Update tombol ukuran aktif
-            document.querySelectorAll('.size-btn').forEach(b => {
-                b.className = 'size-btn py-1.5 rounded-lg text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:bg-slate-800';
-            });
-            document.getElementById(`sizeBtn-${size}`).className = 'size-btn py-1.5 rounded-lg text-xs font-semibold bg-amber-500 text-slate-950 border border-amber-500';
-        }
-
-        function setTextAlign(align) {
-            visualSettings.textAlign = align;
-            const container = document.getElementById('lyricDisplayContainer');
-            const btnCenter = document.getElementById('alignBtn-center');
-            const btnLeft = document.getElementById('alignBtn-left');
-
-            if (align === 'center') {
-                container.classList.remove('text-left');
-                container.classList.add('text-center');
-                btnCenter.className = 'py-2 rounded-lg text-xs font-semibold bg-amber-500 text-slate-950 flex items-center justify-center gap-2';
-                btnLeft.className = 'py-2 rounded-lg text-xs font-semibold bg-slate-900 text-slate-300 border border-slate-700 flex items-center justify-center gap-2';
-            } else {
-                container.classList.remove('text-center');
-                container.classList.add('text-left');
-                btnLeft.className = 'py-2 rounded-lg text-xs font-semibold bg-amber-500 text-slate-950 flex items-center justify-center gap-2';
-                btnCenter.className = 'py-2 rounded-lg text-xs font-semibold bg-slate-900 text-slate-300 border border-slate-700 flex items-center justify-center gap-2';
-            }
+            try {
+                localStorage.removeItem('worshipSlide_customLogo');
+            } catch (e) {}
+            showToast('Logo dikembalikan ke bawaan PMK NS');
         }
 
         // --- MODAL TAMBAH / EDIT LAGU ---
         function openSongModal(mode) {
-            modalMode = mode;
-            const modal = document.getElementById('songModal');
-            const titleEl = document.getElementById('modalTitle');
-            const inputTitle = document.getElementById('modalSongTitle');
-            const inputLyrics = document.getElementById('modalSongLyrics');
-            document.getElementById('modalErrorBox').classList.add('hidden');
+            requireAdmin(() => {
+                modalMode = mode;
+                const modal = document.getElementById('songModal');
+                const titleEl = document.getElementById('modalTitle');
+                const inputTitle = document.getElementById('modalSongTitle');
+                const inputLyrics = document.getElementById('modalSongLyrics');
+                document.getElementById('modalErrorBox').classList.add('hidden');
 
-            if (mode === 'edit') {
-                const currentSong = songs.find(s => s.id === activeSongId);
-                if (!currentSong) return;
-                titleEl.innerHTML = `<i data-lucide="edit-3" class="w-4 h-4 text-amber-400"></i><span>Edit Lagu: ${escapeHtml(currentSong.title)}</span>`;
-                inputTitle.value = currentSong.title;
-                inputLyrics.value = currentSong.slides.join('\n\n');
-            } else {
-                titleEl.innerHTML = `<i data-lucide="plus-circle" class="w-4 h-4 text-amber-400"></i><span>Tambah Lagu Rohani Baru</span>`;
-                inputTitle.value = '';
-                inputLyrics.value = '';
-            }
+                if (mode === 'edit') {
+                    const currentSong = songs.find(s => s.id === activeSongId);
+                    if (!currentSong) return;
+                    titleEl.innerHTML = `<i data-lucide="edit-3" class="w-4 h-4 text-amber-400"></i><span>Edit Lagu: ${escapeHtml(currentSong.title)}</span>`;
+                    inputTitle.value = currentSong.title;
+                    inputLyrics.value = currentSong.slides.join('\n\n');
+                } else {
+                    titleEl.innerHTML = `<i data-lucide="plus-circle" class="w-4 h-4 text-amber-400"></i><span>Tambah Lagu Rohani Baru</span>`;
+                    inputTitle.value = '';
+                    inputLyrics.value = '';
+                }
 
-            modal.classList.remove('hidden');
-            lucide.createIcons();
-            inputTitle.focus();
+                modal.classList.remove('hidden');
+                if (window.lucide) lucide.createIcons();
+                inputTitle.focus();
+            });
         }
 
         function closeSongModal() {
@@ -1014,172 +1170,165 @@
         function saveSongFromModal() {
             const title = document.getElementById('modalSongTitle').value.trim();
             const rawLyrics = document.getElementById('modalSongLyrics').value.trim();
-            const errorBox = document.getElementById('modalErrorBox');
+            const errBox = document.getElementById('modalErrorBox');
 
-            if (!title || !rawLyrics) {
-                errorBox.classList.remove('hidden');
-                return;
-            }
-
-            // Pisahkan lirik berdasarkan baris kosong (1 atau lebih baris kosong)
-            const slidesArray = rawLyrics
+            const slides = rawLyrics
                 .split(/\n\s*\n/)
                 .map(block => block.trim())
-                .filter(block => block.length > 0);
+                .filter(Boolean);
 
-            if (slidesArray.length === 0) {
-                errorBox.classList.remove('hidden');
+            if (!title || slides.length === 0) {
+                errBox.classList.remove('hidden');
                 return;
             }
 
             if (modalMode === 'edit') {
-                const songIndex = songs.findIndex(s => s.id === activeSongId);
-                if (songIndex !== -1) {
-                    songs[songIndex].title = title;
-                    songs[songIndex].slides = slidesArray;
+                const idx = songs.findIndex(s => s.id === activeSongId);
+                if (idx !== -1) {
+                    songs[idx].title = title;
+                    songs[idx].slides = slides;
                     saveSongsToStorage();
+                    closeSongModal();
                     selectSong(activeSongId, 0);
                     showToast(`Lagu "${title}" berhasil diperbarui`);
                 }
             } else {
                 const newSong = {
-                    id: 'song-' + Date.now(),
-                    title: title,
-                    slides: slidesArray
+                    id: `song-${Date.now()}`,
+                    title,
+                    slides
                 };
                 songs.unshift(newSong);
                 saveSongsToStorage();
+                closeSongModal();
                 selectSong(newSong.id, 0);
-                showToast(`Lagu "${title}" ditambahkan ke daftar`);
+                showToast(`Lagu "${title}" ditambahkan`);
             }
-
-            closeSongModal();
         }
 
         function deleteCurrentSong() {
-            if (songs.length <= 1) {
-                showToast('Minimal harus tersisa 1 lagu dalam daftar');
-                return;
-            }
-            const song = songs.find(s => s.id === activeSongId);
-            if (!song) return;
+            requireAdmin(() => {
+                if (songs.length <= 1) {
+                    showToast('Minimal harus tersisa 1 lagu dalam daftar');
+                    return;
+                }
+                const song = songs.find(s => s.id === activeSongId);
+                if (!song) return;
 
-            songs = songs.filter(s => s.id !== activeSongId);
-            saveSongsToStorage();
-            selectSong(songs[0].id, 0);
-            showToast(`Lagu "${song.title}" dihapus`);
+                songs = songs.filter(s => s.id !== activeSongId);
+                saveSongsToStorage();
+                selectSong(songs[0].id, 0);
+                showToast(`Lagu "${song.title}" dihapus`);
+            });
         }
 
-        // --- KONTROL PINTASAN KEYBOARD (PANAH, SPASI, ESC, DLL) ---
+        // --- PINTASAN KEYBOARD ---
         document.addEventListener('keydown', (e) => {
-            // Abaikan pintasan jika sedang mengetik di input atau textarea
             const tag = e.target.tagName.toLowerCase();
             if (tag === 'input' || tag === 'textarea') return;
 
-            if (e.key === 'ArrowRight' || e.key === ' ') {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
                 e.preventDefault();
                 nextSlide();
-            } else if (e.key === 'ArrowLeft') {
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
                 e.preventDefault();
                 prevSlide();
-            } else if (e.key === 'Escape' && isFullscreen) {
-                exitFullscreenMode();
             } else if (e.key.toLowerCase() === 'c') {
                 toggleClearText();
             } else if (e.key.toLowerCase() === 'b') {
                 toggleBlackout();
             } else if (e.key.toLowerCase() === 'f') {
-                if (isFullscreen) exitFullscreenMode();
-                else enterFullscreenMode();
+                toggleFullscreenStage();
             }
         });
 
-        // --- ANIMASI PARTIKEL CAHAYA HALUS DI KANVAS STAGE ---
-        let canvas, ctx, particles = [];
-
+        // --- PARTIKEL CAHAYA HALUS DI LAYAR PROYEKSI ---
         function initParticleCanvas() {
-            canvas = document.getElementById('particleCanvas');
+            const canvas = document.getElementById('particleCanvas');
             if (!canvas) return;
-            ctx = canvas.getContext('2d');
-            resizeCanvas();
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = canvas.offsetWidth;
+            let height = canvas.height = canvas.offsetHeight;
 
-            // Buat partikel debu cahaya lembut
-            particles = [];
-            for (let i = 0; i < 38; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    radius: Math.random() * 2.5 + 0.8,
-                    speedX: (Math.random() - 0.5) * 0.35,
-                    speedY: -Math.random() * 0.45 - 0.1,
-                    alpha: Math.random() * 0.5 + 0.2
-                });
+            window.addEventListener('resize', () => {
+                width = canvas.width = canvas.offsetWidth;
+                height = canvas.height = canvas.offsetHeight;
+            });
+
+            const particles = Array.from({ length: 36 }, () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                r: Math.random() * 2 + 0.6,
+                vx: (Math.random() - 0.5) * 0.25,
+                vy: -Math.random() * 0.35 - 0.1,
+                alpha: Math.random() * 0.55 + 0.15
+            }));
+
+            function animate() {
+                if (visualSettings.particles) {
+                    ctx.clearRect(0, 0, width, height);
+                    particles.forEach(p => {
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        if (p.y < -10) {
+                            p.y = height + 10;
+                            p.x = Math.random() * width;
+                        }
+                        if (p.x < -10) p.x = width + 10;
+                        if (p.x > width + 10) p.x = -10;
+
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(253, 230, 138, ${p.alpha})`;
+                        ctx.fill();
+                    });
+                }
+                requestAnimationFrame(animate);
             }
-            animateParticles();
+            animate();
         }
 
-        function resizeCanvas() {
-            if (!canvas) return;
-            const parent = canvas.parentElement;
-            canvas.width = parent.clientWidth;
-            canvas.height = parent.clientHeight;
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-
-        function animateParticles() {
-            if (!ctx || !canvas) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            if (visualSettings.particles) {
-                particles.forEach(p => {
-                    p.x += p.speedX;
-                    p.y += p.speedY;
-
-                    if (p.y < -10) {
-                        p.y = canvas.height + 10;
-                        p.x = Math.random() * canvas.width;
-                    }
-                    if (p.x < -10) p.x = canvas.width + 10;
-                    if (p.x > canvas.width + 10) p.x = -10;
-
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255, 250, 230, ${p.alpha})`;
-                    ctx.fill();
-                });
-            }
-            requestAnimationFrame(animateParticles);
-        }
-
-        // --- HELPER: TOAST NOTIFICATION & ESCAPE HTML ---
-        let toastTimeout;
+        // --- UTILITAS TOAST & ESCAPE HTML ---
+        let toastTimer = null;
         function showToast(msg) {
-            const toast = document.getElementById('toastNotification');
-            document.getElementById('toastMessage').textContent = msg;
-            toast.classList.remove('opacity-0', 'translate-y-2');
-            toast.classList.add('opacity-100', 'translate-y-0');
-
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-2');
-                toast.classList.remove('opacity-100', 'translate-y-0');
-            }, 2600);
+            const box = document.getElementById('toastBox');
+            const label = document.getElementById('toastMessage');
+            label.textContent = msg;
+            box.classList.remove('opacity-0', 'translate-y-3');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                box.classList.add('opacity-0', 'translate-y-3');
+            }, 3000);
         }
 
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
         }
 
-        // Inisialisasi aplikasi saat halaman dimuat
+        // --- INISIALISASI SAAT HALAMAN DIMUAT ---
         window.addEventListener('DOMContentLoaded', () => {
+            loadAdminSession();
             loadSongsFromStorage();
+
+            const savedUiTheme = localStorage.getItem('worshipSlide_uiTheme');
+            if (savedUiTheme) {
+                setBodyUiTheme(savedUiTheme);
+            }
+
+            const savedStageTheme = localStorage.getItem('worshipSlide_theme');
+            if (savedStageTheme) {
+                setStageTheme(savedStageTheme);
+            }
+
             const savedLogo = localStorage.getItem('worshipSlide_customLogo');
             if (savedLogo) {
                 applyLogoSource(savedLogo);
             }
+
             selectSong(activeSongId, 0);
             initParticleCanvas();
             if (window.lucide) {
